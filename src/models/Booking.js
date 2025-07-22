@@ -12,6 +12,12 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    customerEmail: {
+      type: String,
+      required: true,
+      lowercase: true,
+      trim: true,
+    },
     customerNumber: {
       type: String,
       required: true,
@@ -36,6 +42,10 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       enum: ["pending", "confirmed", "cancelled"],
       default: "pending",
+    },
+    emailSent: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }

@@ -1,13 +1,15 @@
 // src/index.js
+
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import testRoutes from "./routes/testRoutes.js";
 import venueRoutes from "./routes/venueRoutes.js";
 import bookingRoutes from "./routes/bookingRoutes.js";
+import contactRoutes from "./routes/contactRoutes.js";
 import cors from "cors";
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,6 +27,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoutes);
 app.use("/api/venue", venueRoutes);
 app.use("/api/booking", bookingRoutes);
+app.use("/api/contact", contactRoutes);
 app.use("/images", express.static("images"));
 mongoose
   .connect(process.env.MONGODB_URI)
